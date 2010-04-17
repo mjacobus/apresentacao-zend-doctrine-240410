@@ -3,7 +3,7 @@
 class IndexController extends Zend_Controller_Action
 {
 
-    public function init()
+    public function preDispatch()
     {
         $this->view->headTitle('FLISOL 2010 - Festival Latino-Americano de Instalação de Software Livre');
     }

@@ -4,9 +4,13 @@
         <?php echo $this->headTitle() ?>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta http-equiv="Content-Language" content="en-US" />
-        <meta name="keywords" content="word1, word2" />
-        <link href="<?php echo $this->baseUrl('css/style.css') ?>"
+        <link href="<?php echo $this->baseUrl('/css/style.css') ?>"
               media="screen"rel="stylesheet" type="text/css" />
+        <script type="text/javascript">
+            var baseUrl = "<?= $this->baseUrl()?>";
+        </script>
+
+        <?= $this->headScript() ?>
     </head>
     <body>
         <center>
@@ -15,7 +19,9 @@
             </div>
 
             <div id="footer">
-                <p><img src="http://framework.zend.com/images/PoweredBy_ZF_4LightBG.png" /></p>
+                <p><img alt="Powered by Zend Framework" src="http://framework.zend.com/images/PoweredBy_ZF_4LightBG.png" /></p>
+                <p><img alt="Powered by Doctrine" src="http://dev.juokaz.com/wp-content/uploads/2009/11/doctrine-orm-php5.png" /></p>
+
             </div>
         </center>
 

@@ -1,0 +1,32 @@
+
+<h1>Lista de Usuários</h1>
+    <div class="messages">
+        <?= $this->flash()->render() ?>
+    </div>
+
+    <form action="" method="post" >
+        <input type="text" name="search" value="<?= $this->search ?>" />
+        <input type="submit" value="Pesquisar" />
+    </form>
+
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th class="action">Acão</th>
+    </tr>
+    
+    <?php foreach($this->users as $i => $user) : ?>
+        <?php $append = ($i%2) ? ' class="odd"' : '' ?>
+        <tr<?= $append ?>>
+            <td><?= $this->escape( $user->name ) ?></td>
+            <td><?= $this->escape( $user->email ) ?></td>
+
+            <td class="action">
+                <a href="<?= $this->baseUrl( $user->getEditUrl() ) ?>" class="crud_edit">Editar</a>
+                <a href="<?= $this->baseUrl( $user->getDeleteUrl() ) ?>" class="crud_del">Excluir</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+
+</table>

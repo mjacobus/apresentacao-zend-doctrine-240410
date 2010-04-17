@@ -13,4 +13,33 @@
 class User extends Base_User
 {
 
+    /**
+     * Constante que define a url de edicao de um registro User
+     */
+    const URL_EDIT =  '/cadastro/editar/id/';
+    
+    /**
+     * Constante que define a url de exclusao de um registro User
+     */
+    const URL_DEL =  '/cadastro/excluir/id/';
+
+
+    /**
+     * Retorna a url de edicao de um vivente
+     * @return string
+     */
+    public function getEditUrl()
+    {
+        return self::URL_EDIT . $this->id;
+    }
+
+    /**
+     * Retorna a url de edicao de um vivente
+     * @return string
+     */
+    public function getDeleteUrl()
+    {
+        return self::URL_DEL . $this->id;
+    }
+
 }
