@@ -1,0 +1,144 @@
+@charset "utf-8";
+
+
+html, body, div, ul, dl, dt, dd, h1, h2, h3, h4, h5, h6,
+pre, form, p, blockquote, fieldset, input, select {
+	margin:0;
+	padding:0;
+	font-family:"Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif;
+	font-size:12px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:18px;
+	color: #333333;
+}
+
+h1 {
+    font-size:20px;
+    margin: 0 0 10px 0;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #EFEFEF;
+
+ }
+
+ /*
+ #footer{
+    background-color:orange;
+    font-size:8pt;
+    bottom:0;
+    height:auto;
+ }
+ */
+
+#content{
+    margin: 50px;
+    width: 768px;
+    background-color:#ccccDD;
+    min-height:400px;
+}
+
+A {color: #0b0252; font-size:12px;}
+A:link { text-decoration: none }
+A:active { text-decoration: none }
+A:visited { text-decoration: none }
+
+
+
+
+.topMessages {
+    background-color: #eeeeee;
+    padding: 1px 15px 1px 15px;
+    margin: 0 0 15px 0;
+}
+
+.error {color: red;}
+
+.success {color: green;}
+
+
+td {
+    background: #eeeeee;
+    height: 30px;
+    padding: 5px;
+    width: 150px;
+}
+
+tr.odd td {background: #dddddd;}
+
+td.action{text-align: center;}
+
+th {
+    background: #bbbbcc;
+    height: 15px;
+    padding: 5px;
+    width: 150px;
+}
+
+h1 {padding: 10px 0 0 0 ;}
+
+span.replace{}
+
+table {width: 760px;}
+
+input,select {width: 300px}
+input[type=submit]{width: 100px;}
+dt {
+    width: 220px;
+    text-align:right;
+    margin-right: 10px;
+    float:left;
+    padding: 2px 0 2px 0;
+}
+
+
+dd {
+    width: 350px;
+    text-align: left;
+    padding: 2px 0 2px 0
+}
+
+
+span.replace.new {
+    background: url("../img/crud_add.png") no-repeat top right;
+
+width: 32px;
+height: 32x;
+	text-indent: -9999px;
+
+}
+
+.action {
+
+
+}
+
+.action a {
+    width: 20px;
+    height:20px;
+    text-indent:-9000px;
+    display:block;
+    float:left;
+    margin-left:10px;
+}
+
+.action .crud_edit { background:url("../img/crud_edit_16x16.png") top left no-repeat; }
+
+.action .crud_del { background:url("../img/crud_del_16x16.png") top left no-repeat; }
+
+div.action .crud_add {
+    display: block;
+    float:right;
+    height:32px;
+    width:32px;
+}
+
+.clear_both {clear: both;}
+.action .crud_add { background:url("../img/crud_add_32x32.png") top left no-repeat; }
+
+
+th.action , td.action {width: 10px; text-align:center}

@@ -1,0 +1,109 @@
+options:
+  type: INNODB
+  collate: utf8_general_ci
+  charset: utf8
+
+
+City:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+      unsigned: true;
+    name:
+      type: string(100)
+    state_id:
+      type: integer
+      unsigned: true
+  relations:
+    Users:
+      class: User
+      type: many
+      onDelete: RESTRICT
+      local: id
+      foreign: city_id
+    State:
+      local: state_id
+      foreign: id
+
+State:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+      unsigned: true
+    name:
+      type: string(100)
+    short:
+      type: string(3)
+  relations:
+    Cities:
+      class: City
+      type: many
+      onDelete: RESTRICT
+      local: id
+      foreign: state_id
+
+
+User:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+      unsigned: true;
+    name:
+      type: string(100)
+    email: string(255)
+    birthday:
+      type: date
+    city_id:
+      type: integer
+      unsigned: true
+      notnull: true
+  actAs: [Timestampable]
+  relations:
+    City:
+      local: city_id
+      foreign: id
+    Software:
+      foreignAlias: Software
+      class: Software
+      refClass: UserSoftware
+
+Software:
+  columns:
+     id:
+      type: integer
+      primary: true
+      autoincrement: true
+      unsigned: true
+     name:
+      type: string(100)
+  relations:
+    User:
+      foreignAlias: Users
+      class: User
+      refClass: UserSoftware
+
+
+UserSoftware:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+      unsigned: true
+    user_id:
+      type: integer
+      unsigned: true
+    software_id:
+      type: integer
+      unsigned: true
+  relations:
+    Software:
+      foreignAlias: UserSoftware
+    User:
+      foreignAlias: UserSoftware
