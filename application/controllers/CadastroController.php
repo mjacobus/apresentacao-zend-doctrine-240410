@@ -55,6 +55,19 @@ class CadastroController extends Zend_Controller_Action
     }
 
     /**
+     * Cria um novo usuario
+     */
+    public function novoAction()
+    {
+        $this->setForm();
+
+        if($this->getRequest()->isPost()) {
+            $user = Doctrine_Core::getTable('User')->create();
+            $this->save($user);
+        }
+    }
+
+    /**
      * Edita um usuario. Se for post, tenta salvar.
      * Caso contrario, apenas busca o usuario e "joga-o" para a view
      */
@@ -77,29 +90,6 @@ class CadastroController extends Zend_Controller_Action
 
         $form->populate($user->toArray());
         
-    }
-
-    /**
-     * Instancia um formulario
-     * @return Zend_Form
-     */
-    public function setForm()
-    {
-        $form = $this->view->form = new Zend_Form();
-
-        $name = new Zend_Form_Element_Text('name');
-        $name->setLabel('Nome')
-                ->setRequired(true);
-
-
-
-
-
-        $submit = new Zend_Form_Element_Submit('submit');
-        $submit->setLabel('Salvar');
-        $form->addElements(array($name, $submit));
-
-        return $form;
     }
 
     /**
@@ -130,5 +120,42 @@ class CadastroController extends Zend_Controller_Action
         //vai para a view
         $this->render();
     }
+
+
+    /**
+     * Instancia um formulario
+     * @return Zend_Form
+     */
+    public function setForm()
+    {
+        $form = $this->view->form = new Zend_Form();
+
+        $name = new Zend_Form_Element_Text('name');
+        $name->setLabel('Nome')->setRequired(true);
+
+        $email = new Zend_Form_Element_Text('email');
+        $email->setLabel('Email')->setRequired(false)->addValidator('EmailAddress');
+
+        $birthday = new Zend_Form_Element_Text('birthday');
+        $birthday->setLabel('Data Nascimento')->setRequired(false)->addValidator(new Zend_Validate_Date('dd/mm/yyyy'));
+        echo '<pre>';
+        var_dump(Doctrine_Query::create()->select('id, name')
+                        ->from('Software')->fetchArray()); die();
+
+        $software = new Zend_Form_Element_MultiCheckbox('software');
+        $software->setLabel('Software que utiliza')->addMultiOptions(
+                    
+
+                );
+
+
+
+        $submit = new Zend_Form_Element_Submit('submit');
+        $submit->setLabel('Salvar');
+        $form->addElements(array($name, $email ,$birthday, $software, $submit));
+
+        return $form;
+    }
+
 }
 

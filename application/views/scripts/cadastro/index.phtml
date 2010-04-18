@@ -13,6 +13,8 @@
     <tr>
         <th>Nome</th>
         <th>Email</th>
+        <th>Nasc.</th>
+        <th>Software</th>
         <th class="action">Acão</th>
     </tr>
     
@@ -21,6 +23,15 @@
         <tr<?= $append ?>>
             <td><?= $this->escape( $user->name ) ?></td>
             <td><?= $this->escape( $user->email ) ?></td>
+            <td><?= $this->escape( $user->birthday ) ?></td>
+            <td>
+                <ul>
+                    <?php foreach($user->Software as $software) : ?>
+                        <li><?= $this->escape( $software->name ) ?></li>
+                    <?php endforeach ?>
+                </ul>
+
+            </td>
 
             <td class="action">
                 <a href="<?= $this->baseUrl( $user->getEditUrl() ) ?>" class="crud_edit">Editar</a>

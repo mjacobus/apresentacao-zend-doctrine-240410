@@ -12,7 +12,6 @@
  */
 class User extends Base_User
 {
-
     /**
      * Constante que define a url de edicao de um registro User
      */
@@ -41,5 +40,25 @@ class User extends Base_User
     {
         return self::URL_DEL . $this->id;
     }
+
+    /**
+     * Seta a data de nascimento no formato do banco
+     * @param string $value
+     */
+    public function setBirthday($value)
+    {
+        $date = new Zend_Date($value, 'dd/MM/YYYY');
+        $this->_set('birthday', $date->toString('YYYY-MM-dd'));
+    }
+    /**
+     * Retorna a string no formato dd/mm/yyyy
+     * @return string
+     */
+    public function getBirthday()
+    {
+        $date = new Zend_Date($this->_get('birthday'),  'YYYY-MM-dd');
+        return $date->toString('dd/MM/YYYY');
+    }
+
 
 }

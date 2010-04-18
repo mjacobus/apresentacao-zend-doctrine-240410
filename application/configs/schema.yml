@@ -62,7 +62,7 @@ User:
     city_id:
       type: integer
       unsigned: true
-      notnull: true
+      notnull: false
   actAs: [Timestampable]
   relations:
     City:

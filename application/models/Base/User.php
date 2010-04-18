@@ -44,7 +44,7 @@ abstract class Base_User extends Doctrine_Record
         $this->hasColumn('city_id', 'integer', null, array(
              'type' => 'integer',
              'unsigned' => true,
-             'notnull' => true,
+             'notnull' => false,
              ));
 
         $this->option('type', 'INNODB');
