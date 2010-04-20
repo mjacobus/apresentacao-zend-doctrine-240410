@@ -60,5 +60,15 @@ class User extends Base_User
         return $date->toString('dd/MM/YYYY');
     }
 
-
+    /**
+     * Obtem os ids dos software
+     * @return array
+     */
+    public function getSoftwareIds() {
+        $ids = array();
+        foreach($this->Software as $software) {
+            $ids[] = $software->id;
+        }
+        return $ids;
+    }
 }

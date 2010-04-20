@@ -89,6 +89,7 @@ class CadastroController extends Zend_Controller_Action
             $this->save($user);
 
         $form->populate($user->toArray());
+        $form->software->setValue($user->getSoftwareIds());
         
     }
 
@@ -107,6 +108,8 @@ class CadastroController extends Zend_Controller_Action
         if ($form->isValid($data)) {
             try {
                 $user->merge($data);
+                $user->unlink('Software');
+                $user->link('Software', $form->getValue('software'));
                 $user->save();
                 $this->view->flash('Usuário salvo com sucesso (mas que tal)!');
                 $this->_redirect($this->_request->getControllerName());
@@ -138,16 +141,19 @@ class CadastroController extends Zend_Controller_Action
 
         $birthday = new Zend_Form_Element_Text('birthday');
         $birthday->setLabel('Data Nascimento')->setRequired(false)->addValidator(new Zend_Validate_Date('dd/mm/yyyy'));
-        echo '<pre>';
-        var_dump(Doctrine_Query::create()->select('id, name')
-                        ->from('Software')->fetchArray()); die();
+        
+        $softwareTmp = Doctrine_Query::create()->select('id, name')
+                        ->from('Software')->orderBy('name')->execute();
 
         $software = new Zend_Form_Element_MultiCheckbox('software');
-        $software->setLabel('Software que utiliza')->addMultiOptions(
-                    
+        $software->setLabel('Software que utiliza');
 
-                );
+        foreach ($softwareTmp as $sof) {
+            $software->addMultiOption($sof->id, $sof->name);
+        }
 
+        if ($this->getRequest()->isPost())
+            $software->setValue($this->_request->getPost('software'));
 
 
         $submit = new Zend_Form_Element_Submit('submit');

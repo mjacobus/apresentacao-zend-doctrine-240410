@@ -15,6 +15,7 @@
         <th>Email</th>
         <th>Nasc.</th>
         <th>Software</th>
+        <th>Natural de</th>
         <th class="action">Acão</th>
     </tr>
     
@@ -30,8 +31,8 @@
                         <li><?= $this->escape( $software->name ) ?></li>
                     <?php endforeach ?>
                 </ul>
-
             </td>
+            <td><?= $this->escape( $user->City->name . '/' . $user->City->State->name ) ?></td>
 
             <td class="action">
                 <a href="<?= $this->baseUrl( $user->getEditUrl() ) ?>" class="crud_edit">Editar</a>
