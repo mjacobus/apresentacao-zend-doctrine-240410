@@ -171,3 +171,34 @@ fieldset dd label {width: 150px;}
 #menu ul li * {
     color: white;
 }
+
+
+
+#more-information ul {
+    margin-left:18px;
+}
+#more-information ul * {
+   font-size: 13px;
+}
+#more-information ul li {
+    text-align:left;
+    display:block;
+    width: 200px;
+
+    float:left;
+    font-size: 15px;
+
+
+}
+
+#more-information ul li ul  {
+    margin: 0;
+}
+
+
+#more-information ul li ul li  {
+    font-size: 10px;
+    margin-left: 15px;
+    text-align: left;
+    display:block;
+}
