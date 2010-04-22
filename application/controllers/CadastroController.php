@@ -109,12 +109,11 @@ class CadastroController extends Zend_Controller_Action
                 $this->view->flash('Usuário salvo com sucesso (mas que tal)!');
                 $this->_redirect($this->_request->getControllerName());
             } catch (Exception $e) {
-                $form->populate($data);
                 $this->view->errors($e->getMessage());
             }
-        } else {
-            $form->populate($data);
         }
+        $form->populate($data);
+        $form->city_id->addMultiOptions(City::getSelectArrayByState($data['state']));
         //vai para a view
         $this->render();
     }
@@ -156,7 +155,8 @@ class CadastroController extends Zend_Controller_Action
 
         //software
         $software = new Zend_Form_Element_MultiCheckbox('software');
-        $software->setLabel('Software que utiliza');
+        $software->setLabel('Software que utiliza')
+                    ->setRequired(true);
         
         $softwareTmp = Doctrine_Query::create()->select('id, name')
                         ->from('Software')->orderBy('name')->execute();
