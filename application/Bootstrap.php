@@ -12,9 +12,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $this->getApplication()->getAutoloader()
                 ->pushAutoloader(array('Doctrine_Core', 'modelsAutoload'));
 
-        //spl_autoload_register(array('Doctrine', 'autoload'));
-        //spl_autoload_register(array('Doctrine_Core', 'modelsAutoload'));
-
         //sfYaml loader, para o doctrine saber como ler os arquivos no formato yaml
         $loader = Zend_Loader_Autoloader::getInstance();
         $loader->pushAutoloader(array('Doctrine', 'autoload'));
@@ -47,9 +44,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             $manager->setCharset('utf8');
             //caso o banco ainda nao tenha sido criado, resulta em uma excecao
             $conn->execute('SET names UTF8');
-        }catch(Exception $e) {
-
-        }
+        }catch(Exception $e) {}
 
         $path = $option['models_path'];
         Doctrine_Core::loadModels($path);

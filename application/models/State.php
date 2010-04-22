@@ -13,4 +13,28 @@
 class State extends Base_State
 {
 
+    /**
+     * Busca todos os estados em ordem alfabetica de nome
+     * @return  Doctrine_Collection
+     */
+    public function getAll()
+    {
+        $dql = new Doctrine_Query();
+        $dql->from('State')->orderBy('name');
+        return $dql->execute();
+    }
+
+    /**
+     * Este array serve para popular o Zend_Form_Element_Select
+     * @return array
+     */
+    public static function getSelectArray()
+    {
+        $states = array();
+        foreach(self::getAll() as $state){
+            $states[$state->id] = $state->name;
+        }
+        return $states;
+    }
+    
 }

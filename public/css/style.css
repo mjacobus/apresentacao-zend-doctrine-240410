@@ -138,7 +138,36 @@ div.action .crud_add {
 .clear_both {clear: both;}
 .action .crud_add { background:url("../img/crud_add_32x32.png") top left no-repeat; }
 
-
 th.action , td.action {width: 60px; text-align:center}
 
 ul {list-style: none;}
+
+fieldset {padding:5px 0px 5px 10px;}
+
+fieldset dt{display:none}
+
+fieldset dd * {float:left;}
+
+fieldset dd label {width: 150px;}
+
+
+#menu {
+    background: gray;
+}
+.clear {clear:both;}
+
+#menu ul {
+    background:white;
+    position: absolute;
+}
+
+#menu ul li {
+    width: 100px;
+    background: gray;
+    padding: 10px;
+    border: 1px solid white;
+}
+
+#menu ul li * {
+    color: white;
+}

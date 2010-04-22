@@ -13,8 +13,19 @@
         <?= $this->headScript() ?>
     </head>
     <body>
+        <div id="menu">
+            <ul>
+                <li><a href="<?= $this->baseUrl('/') ?>">Home</a></li>
+                <li><a href="<?= $this->baseUrl('/novo-controller') ?>">Novo Controller</a></li>
+                <li><a href="<?= $this->baseUrl('/cadastro') ?>">CRUD</a></li>
+            </ul>
+        </div>
         <center>
             <div id="content">
+                
+             
+
+            
                 <?php echo $this->layout()->content ?>
             </div>
 

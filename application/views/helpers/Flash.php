@@ -57,7 +57,7 @@ class Zend_View_Helper_Flash extends Zend_Controller_Action_Helper_FlashMessenge
         $htmlMessage = '<ul class="' . $this->getDivClass() . '">';
 
         foreach($this->getMessages() as $message) {
-            $htmlMessage .= '<li class="'. $this->getParagraphClass() .'">- ' . htmlentities($message) . '</li>';
+            $htmlMessage .= '<li class="'. $this->getParagraphClass() .'">- ' . htmlentities($message, ENT_COMPAT, 'utf-8') . '</li>';
         }
 
         $htmlMessage  .= '</ul>';

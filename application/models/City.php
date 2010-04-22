@@ -13,4 +13,32 @@
 class City extends Base_City
 {
 
+    /**
+     * Busca cidades pelo ID do Estado
+     * @param int $stateID
+     * @return Doctrine_Collection
+     */
+    public static function getCitiesByState($stateID)
+    {
+        return Doctrine_Query::create()
+            ->from('City')
+            ->where('City.state_id = ?', $stateID)
+            ->orderBy('name')
+            ->execute();
+    }
+
+    /**
+     * Busca json no formato {"id":"name","id":"name"}
+     * @param id $stateID id do estado
+     * @return string o Json para popular o select via ajax
+     */
+    public function getSelectArrayByState($stateID)
+    {
+        $cities = self::getCitiesByState($stateID);
+        $array = array();
+        foreach($cities as $city) {
+                $array[$city->id] = $city->name;
+        }
+        return $array;
+    }
 }

@@ -1,7 +1,7 @@
 <?php
 
 class CadastroController extends Zend_Controller_Action
-{
+{ 
 
     /**
      * Realiza tarefas antes de executar a acao e renderizar a view
@@ -10,7 +10,6 @@ class CadastroController extends Zend_Controller_Action
     {
         $this->view->headTitle('Cadastro');
         $this->view->headScript()->appendFile($this->view->baseUrl('/js/jquery.js'));
-        $this->view->headScript()->appendFile($this->view->baseUrl('/js/jquery.selectboxes.min.js'));
         $this->view->headScript()->appendFile($this->view->baseUrl('/js/site.js'));
     }
 
@@ -24,11 +23,10 @@ class CadastroController extends Zend_Controller_Action
         $request = $this->getRequest();
 
         if ($request->isPost()) {
-
             //disponibiliza o $_POST['search'] para na view
             $this->view->search = $search = $request->getPost('search');
             $search = '%' . $search . '%';
-
+            
             //instancia uma DQl
             $dql = Doctrine_Query::create();
             $dql->from('User u')
@@ -38,18 +36,14 @@ class CadastroController extends Zend_Controller_Action
                     ->addWhere('u.name like ?',  $search)
                     ->orWhere('u.email like ?', $search)
                     ->orWhere('c.name like ?',  $search)
-                    ->orWhere('e.name like ? OR e.short = ?',
-                            array($search,$search))
+                    ->orWhere('e.name like ? OR e.short = ?',array($search,$search))
                     ->orWhere('s.name like ? ', $search);
 
             //verifica valores postados e pesquisa de acordo
             $users = $dql->execute();
-
-            
         } else {
             $users = Doctrine_Core::getTable('User')->findAll();
         }
-        
         //disponibiliza os usuarios na view
         $this->view->users = $users;
     }
@@ -90,7 +84,8 @@ class CadastroController extends Zend_Controller_Action
 
         $form->populate($user->toArray());
         $form->software->setValue($user->getSoftwareIds());
-        
+        $form->state->setValue($user->City->state_id);
+        $form->city_id->addMultiOptions(City::getSelectArrayByState($user->City->state_id));
     }
 
     /**
@@ -124,7 +119,6 @@ class CadastroController extends Zend_Controller_Action
         $this->render();
     }
 
-
     /**
      * Instancia um formulario
      * @return Zend_Form
@@ -133,32 +127,53 @@ class CadastroController extends Zend_Controller_Action
     {
         $form = $this->view->form = new Zend_Form();
 
+        //nome
         $name = new Zend_Form_Element_Text('name');
         $name->setLabel('Nome')->setRequired(true);
 
+        //email
         $email = new Zend_Form_Element_Text('email');
         $email->setLabel('Email')->setRequired(false)->addValidator('EmailAddress');
 
+        //aniversario
         $birthday = new Zend_Form_Element_Text('birthday');
         $birthday->setLabel('Data Nascimento')->setRequired(false)->addValidator(new Zend_Validate_Date('dd/mm/yyyy'));
+
+        //estado (este valor nao eh salvo na tabela)
+        $state = new Zend_Form_Element_Select('state');
+        $state->setLabel('Estado');
+        $state->addMultiOption('', 'selecione');
+        $state->addMultiOptions(State::getSelectArray())
+                ->setAttrib('class', 'ajax-state');
+
+
+        //cidade
+        $city_id = new Zend_Form_Element_Select('city_id');
+        $city_id->setLabel('Cidade')
+                ->setRegisterInArrayValidator(false)
+                ->setAttrib('class', 'ajax-city')
+                ->setRequired(true);
+
+        //software
+        $software = new Zend_Form_Element_MultiCheckbox('software');
+        $software->setLabel('Software que utiliza');
         
         $softwareTmp = Doctrine_Query::create()->select('id, name')
                         ->from('Software')->orderBy('name')->execute();
-
-        $software = new Zend_Form_Element_MultiCheckbox('software');
-        $software->setLabel('Software que utiliza');
-
         foreach ($softwareTmp as $sof) {
             $software->addMultiOption($sof->id, $sof->name);
         }
 
-        if ($this->getRequest()->isPost())
-            $software->setValue($this->_request->getPost('software'));
+        //adiciona elementos ao formulario
+        $form->addElements(array($name, $email ,$birthday, $state, $city_id, $software));
 
+        //cria fieldset ao redor do elemento software
+        $form->addDisplayGroup(array('software'),'Utiliza', array('legend'=>'Utiliza'));
 
+        //submit
         $submit = new Zend_Form_Element_Submit('submit');
         $submit->setLabel('Salvar');
-        $form->addElements(array($name, $email ,$birthday, $software, $submit));
+        $form->addElement($submit);
 
         return $form;
     }

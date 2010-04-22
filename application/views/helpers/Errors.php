@@ -42,7 +42,7 @@ class Zend_View_Helper_Errors {
         $htmlMessage = '<ul class="messages">';
 
         foreach($this->messages as $message) {
-            $htmlMessage .= '<li class="error">- ' . htmlentities($message) . '</li>';
+            $htmlMessage .= '<li class="error">- ' . htmlentities($message,ENT_COMPAT,'utf-8') . '</li>';
         }
 
         $htmlMessage  .= '</li>';
