@@ -13,6 +13,12 @@
         <?= $this->headScript() ?>
     </head>
     <body>
+
+        <div id="header">
+            <a href="http://wiki.softwarelivre-vs.org/#head-1002a215df3c5eaaa2a894599b11b39df89668df" >
+                FLISOL 2010 - Festival Latino-Americano de Instalação de Software Livre
+            </a>
+        </div>
         <div id="menu">
             <ul>
                 <li><a href="<?= $this->baseUrl('/') ?>">Home</a></li>
@@ -20,21 +26,19 @@
                 <li><a href="<?= $this->baseUrl('/cadastro') ?>">CRUD</a></li>
             </ul>
         </div>
-        <center>
-            <div id="content">
-                
-             
 
-            
-                <?php echo $this->layout()->content ?>
-            </div>
+        <div id="content">
+            <?php echo $this->layout()->content ?>
+        </div>
 
-            <div id="footer">
-                <p><img alt="Powered by Zend Framework" src="<?= $this->baseUrl('/img/zend.png') ?>" /></p>
-                <p><img alt="Powered by Doctrine" src="<?= $this->baseUrl('/img/doctrine.png') ?>" /></p>
 
-            </div>
-        </center>
+        <br class="clear" />
+        <div id="footer">
+            <p><img alt="Powered by Zend Framework" src="<?= $this->baseUrl('/img/zend.png') ?>" /></p>
+            <p><img alt="Powered by Doctrine" src="<?= $this->baseUrl('/img/doctrine.png') ?>" /></p>
+
+        </div>
+
 
     </body>
 </html>

@@ -3,43 +3,51 @@
 
 html, body, div, ul, dl, dt, dd, h1, h2, h3, h4, h5, h6,
 pre, form, p, blockquote, fieldset, input, select {
-	margin:0;
-	padding:0;
-	font-family:"Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif;
-	font-size:12px;
-	font-style:normal;
-	font-variant:normal;
-	font-weight:normal;
-	line-height:18px;
-	color: #333333;
+    margin:0;
+    padding:0;
+    font-family:"Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif;
+    font-size:12px;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:18px;
+    color: #333333;
 }
+
 
 h1 {
     font-size:20px;
     margin: 0 0 10px 0;
 }
 
-body{
-    padding: 0;
+body
+{
     margin: 0;
-    background-color: #EFEFEF;
+    padding: 10px 0 0 0;
+    background-color: #6D7B8D;
+    font-family: "Verdana", "Arial", "Helvetica", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: justify
+}
 
- }
 
- /*
- #footer{
-    background-color:orange;
-    font-size:8pt;
-    bottom:0;
-    height:auto;
- }
- */
+/*
+#footer{
+   background-color:orange;
+   font-size:8pt;
+   bottom:0;
+   height:auto;
+}
+*/
 
 #content{
-    margin: 50px;
     width: 768px;
-    background-color:#ccccDD;
+    padding: 10px;
+    background-color:#FFFFFF;
     min-height:400px;
+    float:left;
+    border: 5px solid #DDDDDD;
 }
 
 A {color: #0b0252; font-size:12px;}
@@ -51,7 +59,7 @@ A:visited { text-decoration: none }
 
 
 .topMessages {
-    background-color: #eeeeee;
+    background-color: #DDDDDD;
     padding: 1px 15px 1px 15px;
     margin: 0 0 15px 0;
 }
@@ -104,9 +112,9 @@ dd {
 span.replace.new {
     background: url("../img/crud_add.png") no-repeat top right;
 
-width: 32px;
-height: 32x;
-	text-indent: -9999px;
+    width: 32px;
+    height: 32x;
+    text-indent: -9999px;
 
 }
 
@@ -151,25 +159,40 @@ fieldset dd * {float:left;}
 fieldset dd label {width: 150px;}
 
 
-#menu {
-    background: gray;
-}
+
 .clear {clear:both;}
+#menu
+{
+    background-color: #6D7B8D;
+    margin: 0;
+    padding: 1px;
+    width: 150px;
+    float: left;
 
-#menu ul {
-    background:white;
-    position: absolute;
 }
 
-#menu ul li {
-    width: 100px;
-    background: gray;
-    padding: 10px;
-    border: 1px solid white;
+#menu li
+{
+    margin: 5px;
+    padding: 4px;
+    background-color: #ffffff;
+    border: 5px solid #DDDDDD;
 }
 
-#menu ul li * {
-    color: white;
+
+#menu a, #menu a:visited
+{
+    color: #293766;
+    text-decoration: none
+}
+
+
+#menu a:hover
+{
+    padding: 1px 2px 1px 2px;
+    background-color: #DADCE0;
+
+
 }
 
 
@@ -178,7 +201,7 @@ fieldset dd label {width: 150px;}
     margin-left:18px;
 }
 #more-information ul * {
-   font-size: 13px;
+    font-size: 13px;
 }
 #more-information ul li {
     text-align:left;
@@ -201,4 +224,20 @@ fieldset dd label {width: 150px;}
     margin-left: 15px;
     text-align: left;
     display:block;
+}
+
+
+
+#header {
+        background: white;
+        width: auto;
+margin: 10px;
+text-align: center;
+
+}
+
+
+#header a {
+        font-size: 15px;
+        padding:10px;
 }
