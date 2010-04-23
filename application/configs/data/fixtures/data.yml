@@ -3,53 +3,29 @@ User:
     name: "Marcelo Guilherme Jacobus Jr"
     email: marcelo.jacobus@gmail.com
     birthday: "1984-12-07"
-    City: Noia
+    #City: Noia
     Software: [PHP, MYSQL, Apache, Linux, Git]
 
   User_2:
     name: "Fulano de Tal"
     email: fulano@gmail.com
     birthday: "1970-11-05"
-    City: Poa
+    #City: Poa
     Software: [Git]
     
   User_3:
     name: "Ciclano de Tal"
     email: ciclano@gmail.com
     birthday: "1970-11-06"
-    City: SL
+   # City: SL
     Software: [PHP, MYSQL]
 
   User_4:
     name: "Beutrano de Tal"
     email: beutrano@gmail.com
     birthday: "1970-11-07"
-    City: SP
+    #City: SP
     Software: [Java,Linux, Git]
-
-City:
-  Noia:
-     name : "Novo Hamburgo"
-     State: RS
-  Poa:
-     name : "Porto Alegre"
-     State: RS
-  SL:
-     name : "São Leopoldo"
-     State: RS
-  SP:
-     name : "São Paulo"
-     State: SP
-     
-State:
-  RS:
-     name : "Rio Grande do Sul"
-     short: RS
-  SP:
-     name : "São Paulo"
-     short: SP
-
-
 
 Software:
   Apache:
