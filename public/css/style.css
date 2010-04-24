@@ -260,3 +260,20 @@ ul.errors li{
     color:red;
 }
 fieldset ul.errors li{padding:0px;}
+
+div.hello_world
+{
+    background:white;
+    padding:30px;
+    font-size:20px;
+    color:red;
+
+}
+
+
+div.hello_world p
+{
+    font-size:20px;
+    color:red;
+
+}
