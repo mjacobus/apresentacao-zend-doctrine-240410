@@ -20,6 +20,7 @@ class CadastroController extends Zend_Controller_Action
      */
     public function indexAction()
     {
+
         $request = $this->getRequest();
 
         if ($request->isPost()) {
