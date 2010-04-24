@@ -11,6 +11,7 @@ class CadastroController extends Zend_Controller_Action
         $this->view->headTitle('Cadastro');
         $this->view->headScript()->appendFile($this->view->baseUrl('/js/jquery.js'));
         $this->view->headScript()->appendFile($this->view->baseUrl('/js/site.js'));
+        //$this->_helper->layout->disableLayout();
     }
 
     /**
